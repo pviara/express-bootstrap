@@ -4,7 +4,9 @@
   "description": "Ce repository a été conçu comme la base de ce que sera votre projet Express.js une fois votre setup terminé. Prenez soin de lire chaque étape et ne manquez pas de feuilleter les pages de documentation qui vous sont partagées.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx ts-node-dev src/app.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
