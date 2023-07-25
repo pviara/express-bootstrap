@@ -1,0 +1,12 @@
+{
+  "name": "express-bootstrap",
+  "version": "1.0.0",
+  "description": "Ce repository a été conçu comme la base de ce que sera votre projet Express.js une fois votre setup terminé. Prenez soin de lire chaque étape et ne manquez pas de feuilleter les pages de documentation qui vous sont partagées.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
