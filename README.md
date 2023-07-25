@@ -137,7 +137,7 @@ app.listen(port, () => console.log(`> Listening on port ${port}`));
 npm run dev # Exécute le script 'dev' de l'objet 'scripts'
 ```
 
-3. Vous devriez un output à peu près ressemblant à celui-ci :
+3. Vous devriez avoir un output à peu près ressemblant à celui-ci :
 ```txt
 [INFO] 16:52:33 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 5.1.6)
 > Listening on port 3000
