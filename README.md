@@ -1,5 +1,5 @@
 # README
-Ce repository a été conçu comme la base de ce que sera votre projet Express.js une fois votre setup terminé. Prenez soin de lire chaque étape et ne manquez pas de feuilleter les pages de documentation qui vous sont partagées.
+Ce repository a été conçu comme la base de ce que sera votre projet Express.js une fois le cours terminé. Prenez soin de lire chaque étape et ne manquez pas de feuilleter les pages de documentation qui vous sont partagées.
 
 ## Environnement de développement
 1. Télécharger puis installer **Node.js** (LTS, i.e. Long-Term Support)
@@ -89,7 +89,7 @@ Ouvrez votre `package.json` et ajoutez une ligne à l'objet `scripts` :
 1. Ouvrez votre `package.json` et ajoutez une ligne à l'objet `scripts` :
 ```json
 "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
 }
 ```
 
@@ -143,4 +143,4 @@ npm run dev # Exécute le script 'dev' de l'objet 'scripts'
 > Listening on port 3000
 ```
 
-**Félicitations !** 🥳🎉 Vous avez développé votre serveur Express.js.
+**Félicitations !** 🥳🎉 Vous avez créé votre application back-end !
