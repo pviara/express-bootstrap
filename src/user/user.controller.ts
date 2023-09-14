@@ -2,7 +2,7 @@ import { User } from './user';
 import { UserService } from './user.service';
 
 export class UserController {
-    constructor(private readonly userService: UserService) {}
+    constructor(private userService: UserService) {}
 
     add(username: string): User {
         // is the username empty ?
