@@ -9,7 +9,7 @@ export class UserRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get(':id', (req, res, next) => {
+        this.router.get('/:id', (req, res, next) => {
             try {
                 const result = this.userController.getById(
                     parseInt(req.params.id),
@@ -20,6 +20,13 @@ export class UserRouter {
             }
         });
 
-        // other routes...
+        this.router.post('', (req, res, next) => {
+            try {
+                const result = this.userController.add(req.body.username);
+                res.status(200).json(result);
+            } catch (error: unknown) {
+                next(error);
+            }
+        });
     }
 }
