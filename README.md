@@ -16,8 +16,8 @@ npm install -g typescript
 
 ## Setup du projet
 ### Initialisation
-1. Créer un repository sur GitHub puis le cloner
-2. Initialiser le **projet** à la racine avec **npm** :
+1. Créer un dossier en local sur votre machine
+2. Initialiser le **projet** à la racine (donc dans le dossier que vous venez de créer) avec **npm** :
 ```bash
 npm init -y # Génère un fichier package.json
 ```
