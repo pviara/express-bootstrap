@@ -16,7 +16,7 @@ npm install -g typescript
 
 ## Setup du projet
 ### Initialisation
-1. Créer un dossier en local sur votre machine
+1. Créer un dossier VIDE en local sur votre machine, ne procédez pas aux étapes suivantes dans le repo que vous venez de cloner
 2. Initialiser le **projet** à la racine (donc dans le dossier que vous venez de créer) avec **npm** :
 ```bash
 npm init -y # Génère un fichier package.json
