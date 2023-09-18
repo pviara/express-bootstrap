@@ -86,7 +86,7 @@ Ouvrez votre `package.json` et ajoutez une ligne à l'objet `scripts` :
 ```
 
 #### Jest
-1. Ouvrez votre `package.json` et ajoutez une ligne à l'objet `scripts` :
+1. Ouvrez votre `package.json` et remplacez la ligne `test` de l'objet `scripts` :
 ```json
 "scripts": {
     "test": "jest --passWithNoTests",
