@@ -20,7 +20,7 @@ export class UserRouter {
             }
         });
 
-        this.router.post('', (req, res, next) => {
+        this.router.post('/add-user', (req, res, next) => {
             try {
                 const result = this.userController.add(req.body.username);
                 res.status(200).json(result);
