@@ -30,8 +30,3 @@ describe('UserJSONService', () => {
         });
     });
 });
-function stubReadFileSync(users: User[]): void {
-    const stringifiedUsers = JSON.stringify(users);
-    const dummyBuffer = Buffer.from(stringifiedUsers);
-    fsMock.readFileSync.mockReturnValueOnce(dummyBuffer);
-}
