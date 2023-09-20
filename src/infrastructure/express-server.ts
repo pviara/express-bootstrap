@@ -13,14 +13,14 @@ export class ExpressServer {
         this.configureRoutes();
     }
 
-    private configureBodyParser(): void {
-        this.express.use(bodyParser.json());
-    }
-
     bootstrap(): void {
         this.express.listen(this.port, () => {
             console.log(`> Listening on port ${this.port}`);
         });
+    }
+
+    private configureBodyParser(): void {
+        this.express.use(bodyParser.json());
     }
 
     private configureRoutes(): void {
