@@ -16,8 +16,8 @@ npm install -g typescript
 
 ## Setup du projet
 ### Initialisation
-1. Créer un dossier VIDE en local sur votre machine, ne procédez pas aux étapes suivantes dans le repo que vous venez de cloner
-2. Initialiser le **projet** à la racine (donc dans le dossier que vous venez de créer) avec **npm** :
+1. Créer un dossier VIDE en local sur votre machine
+2. Initialiser le **projet** à la racine (donc dans le dossier que l'on vient de créer) avec **npm** :
 ```bash
 npm init -y # Génère un fichier package.json
 ```
@@ -40,6 +40,7 @@ Pour utiliser Express.js mais aussi pour formatter notre code ou même le tester
 Ce projet dépend initialement de deux _dependencies_ :
 - `dotenv` sert à charger des variables d'environnement à partir d'un fichier
 - `express` sert à créer des applications web de manière simple et rapide
+- `body-parser` sert à analyser le corps des requêtes HTTP reçues par le serveur
 
 Côté développement, nous allons avoir besoin de plusieurs _dev dependencies_ :
 - `ts-node-dev` sert à compiler les fichiers TypeScript à la volée et en continu
@@ -47,17 +48,18 @@ Côté développement, nous allons avoir besoin de plusieurs _dev dependencies_ 
 - `ts-jest` sert à tester des fichiers TypeScript via l'utilisation de `jest`
 - `prettier` (optionnel) sert à appliquer des règles de formatage cohérentes à votre code
 
-Sans oublier tous les packages préfixés par `@types` : `@types/express`, `@types/node` et `@types/jest`. Ces packages spéciaux fournissent des informations de typage pour des packages JavaScript qui ne sont pas écrits en TypeScript nativement.
+Sans oublier tous les packages préfixés par `@types` : `@types/express`, `@types/node`, `@types/jest` et `@types/body-parser`. Ces packages spéciaux fournissent des informations de typage pour des packages JavaScript qui ne sont pas écrits en TypeScript nativement.
 
 Pour installer tous ces packages, utilisez les commandes suivantes :
 ```bash
-npm install dotenv express
-npm install -D ts-node-dev jest ts-jest prettier @types/express @types/jest @types/node
+npm install dotenv express body-parser
+npm install -D ts-node-dev jest ts-jest prettier @types/express @types/node @types/jest @types/body-parser
 ```
 
 **Ressources :**
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [express](https://www.npmjs.com/package/express)
+- [body-parser](https://www.npmjs.com/package/body-parser)
 - [ts-node-dev](https://www.npmjs.com/package/ts-node-dev)
 - [jest](https://www.npmjs.com/package/jest)
 - [ts-jest](https://www.npmjs.com/package/ts-jest)
@@ -65,6 +67,7 @@ npm install -D ts-node-dev jest ts-jest prettier @types/express @types/jest @typ
 - [@types/express](https://www.npmjs.com/package/@types/express)
 - [@types/node](https://www.npmjs.com/package/@types/node)
 - [@types/jest](https://www.npmjs.com/package/@types/jest)
+- [@types/body-parser](https://www.npmjs.com/package/@types/body-parser)
 
 ### Configuration
 Toujours un peu pénible de tout configurer mais en fin de compte c'est très rapide, don't worry.
