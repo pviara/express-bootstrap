@@ -5,6 +5,7 @@ import { UserService } from '../user/user.service';
 import * as dotenv from 'dotenv';
 
 export class ExpressApplication {
+    private allowedMainOrigin!: string;
     private expressRouter!: ExpressRouter;
     private port!: string;
     private server!: ExpressServer;
@@ -20,7 +21,7 @@ export class ExpressApplication {
 
     private configureApplication(): void {
         this.configureEnvironment();
-        this.configureServerPort();
+        this.configureVariables();
         this.configureServices();
         this.configureExpressRouter();
         this.configureServer();
@@ -32,8 +33,35 @@ export class ExpressApplication {
         });
     }
 
+    private configureVariables(): void {
+        this.configureAllowedMainOrigin();
+        this.configureServerPort();
+    }
+
+    private configureAllowedMainOrigin(): void {
+        this.allowedMainOrigin = this.getAllowedMainOrigin();
+    }
+
+    private getAllowedMainOrigin(): string {
+        const allowedMainOrigin = process.env.ALLOWED_MAIN_ORIGIN;
+        if (!allowedMainOrigin) {
+            throw new Error('No allowed main origin was found in env file.');
+        }
+
+        return allowedMainOrigin;
+    }
+
     private configureServerPort(): void {
         this.port = this.getPort();
+    }
+
+    private getPort(): string {
+        const port = process.env.PORT;
+        if (!port) {
+            throw new Error('No port was found in env file.');
+        }
+
+        return port;
     }
 
     private configureServices(): void {
@@ -45,15 +73,10 @@ export class ExpressApplication {
     }
 
     private configureServer(): void {
-        this.server = new ExpressServer(this.expressRouter, this.port);
-    }
-
-    private getPort(): string {
-        const port = process.env.PORT;
-        if (!port) {
-            throw new Error('No port was found in env file.');
-        }
-
-        return port;
+        this.server = new ExpressServer(
+            this.allowedMainOrigin,
+            this.expressRouter,
+            this.port,
+        );
     }
 }
