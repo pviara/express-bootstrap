@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { UserJSONService } from './user.json-service';
 import { User } from './user';
+import { UserJSONService } from './user.json-service';
 
 // Pour lancer les tests : "npm run test" (sans les guillemets) dans l'invite de commandes
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { UserService } from '../user/user.service';
 import { UserController } from '../user/user.controller';
 import { UserRouter } from '../user/user.router';
+import { UserService } from '../user/user.service';
 
 export class ExpressRouter {
     router = Router();

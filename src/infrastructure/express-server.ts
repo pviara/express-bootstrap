@@ -1,6 +1,6 @@
+import bodyParser from 'body-parser';
 import express from 'express';
 import { ExpressRouter } from './express-router';
-import bodyParser from 'body-parser';
 
 export class ExpressServer {
     private express = express();
