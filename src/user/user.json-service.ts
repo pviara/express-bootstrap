@@ -1,5 +1,5 @@
+import { areSameStrings, isArrayEmpty } from '../utils';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { isArrayEmpty } from '../utils';
 import { User } from './user';
 import { UserService } from './user.service';
 
@@ -14,6 +14,8 @@ export class UserJSONService implements UserService {
 
     add(username: string): User {
         const users = this.getUsersFromJsonFile();
+
+        this.throwWhenUsernameExists(users, username);
 
         const newId = this.generateUniqueId(users);
         const newUser = new User(newId, username);
@@ -41,6 +43,17 @@ export class UserJSONService implements UserService {
         const buffer = readFileSync(this.userJsonPath);
         const users = JSON.parse(buffer.toString()) as User[];
         return users;
+    }
+
+    private throwWhenUsernameExists(users: User[], username: string): void {
+        const usernameAlreadyExists = users.some((user) =>
+            areSameStrings(user.username, username),
+        );
+        if (usernameAlreadyExists) {
+            throw new Error(
+                `Given username "${username}" points to an existing user.`,
+            );
+        }
     }
 
     private generateUniqueId(users: User[]): number {
