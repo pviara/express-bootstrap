@@ -11,15 +11,19 @@ export class ExpressServer {
         private expressRouter: ExpressRouter,
         private port: string,
     ) {
-        this.configureCorsPolicy();
-        this.configureBodyParser();
-        this.configureRoutes();
+        this.configureServer();
     }
 
     bootstrap(): void {
         this.express.listen(this.port, () => {
             console.log(`> Listening on port ${this.port}`);
         });
+    }
+
+    private configureServer(): void {
+        this.configureCorsPolicy();
+        this.configureBodyParser();
+        this.configureRoutes();
     }
 
     private configureCorsPolicy(): void {
