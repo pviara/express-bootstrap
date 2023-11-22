@@ -1,3 +1,4 @@
+import { ErrorHandlerService } from '../application/error-handler.service';
 import { ExpressRouter } from './express-router';
 import { ExpressServer } from './express-server';
 import { UserJSONService } from '../user/user.json-service';
@@ -6,6 +7,7 @@ import * as dotenv from 'dotenv';
 
 export class ExpressApplication {
     private allowedMainOrigin!: string;
+    private errorHandlerService!: ErrorHandlerService;
     private expressRouter!: ExpressRouter;
     private port!: string;
     private server!: ExpressServer;
@@ -65,6 +67,7 @@ export class ExpressApplication {
     }
 
     private configureServices(): void {
+        this.errorHandlerService = new ErrorHandlerService();
         this.userService = new UserJSONService();
     }
 
@@ -75,6 +78,7 @@ export class ExpressApplication {
     private configureServer(): void {
         this.server = new ExpressServer(
             this.allowedMainOrigin,
+            this.errorHandlerService,
             this.expressRouter,
             this.port,
         );

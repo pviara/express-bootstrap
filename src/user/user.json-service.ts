@@ -2,6 +2,7 @@ import { areSameStrings, isArrayEmpty } from '../utils';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { User } from './user';
 import { UserService } from './user.service';
+import { AlreadyExistingUserError } from './errors/already-existing-user.error';
 
 const DEFAULT_USER_ID = 0;
 
@@ -50,9 +51,7 @@ export class UserJSONService implements UserService {
             areSameStrings(user.username, username),
         );
         if (usernameAlreadyExists) {
-            throw new Error(
-                `Given username "${username}" points to an existing user.`,
-            );
+            throw new AlreadyExistingUserError(username);
         }
     }
 

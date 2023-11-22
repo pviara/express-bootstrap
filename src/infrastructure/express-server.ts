@@ -1,13 +1,17 @@
+import { ApplicationError } from '../application/application-error';
 import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
-import express from 'express';
+import { ErrorHandlerService } from '../application/error-handler.service';
+import express, { NextFunction, Request, Response } from 'express';
 import { ExpressRouter } from './express-router';
+import { HttpStatusCode } from '../application/http-status-code';
 
 export class ExpressServer {
     private express = express();
 
     constructor(
         private allowedMainOrigin: string,
+        private errorHandlerService: ErrorHandlerService,
         private expressRouter: ExpressRouter,
         private port: string,
     ) {
@@ -24,6 +28,7 @@ export class ExpressServer {
         this.configureCorsPolicy();
         this.configureBodyParser();
         this.configureRoutes();
+        this.configureErrorHandling();
     }
 
     private configureCorsPolicy(): void {
@@ -49,5 +54,27 @@ export class ExpressServer {
 
     private configureRoutes(): void {
         this.express.use('/api', this.expressRouter.router);
+    }
+
+    private configureErrorHandling(): void {
+        this.express.use(
+            (
+                error: Error,
+                req: Request,
+                res: Response,
+                next: NextFunction,
+            ): void => {
+                let statusCode = HttpStatusCode.InternalServerError;
+
+                if (error instanceof ApplicationError) {
+                    statusCode =
+                        this.errorHandlerService.getHttpStatusCodeFrom(error);
+                }
+
+                console.error(error.stack);
+
+                res.status(statusCode).json({ message: error.message });
+            },
+        );
     }
 }
