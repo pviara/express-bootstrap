@@ -3,10 +3,10 @@ import { AppErrorCode } from './app-error/app-error-code';
 import { HttpError } from './http-error/http-error';
 import { HttpStatusCode } from './http-error/http-status-code';
 
-type ErrorCorrelation = Record<AppErrorCode, HttpStatusCode>;
+type ErrorCorrelations = Record<AppErrorCode, HttpStatusCode>;
 
 export class ErrorHandlerService {
-    private correlationTable: ErrorCorrelation = {
+    private errorCorrelations: ErrorCorrelations = {
         AlreadyExistingUser: HttpStatusCode.Conflict,
     };
 
@@ -24,6 +24,6 @@ export class ErrorHandlerService {
     }
 
     private getHttpStatusCodeFrom(applicationError: AppError): HttpStatusCode {
-        return this.correlationTable[applicationError.errorCode];
+        return this.errorCorrelations[applicationError.errorCode];
     }
 }
