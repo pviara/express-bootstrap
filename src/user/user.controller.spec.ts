@@ -1,3 +1,4 @@
+import { HttpError } from '../application/http-error';
 import { User } from './user';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
@@ -16,7 +17,7 @@ describe('UserController', () => {
             const usernames: string[] = ['', ' ', '     '];
 
             for (const username of usernames) {
-                expect(() => sut.add(username)).toThrow();
+                expect(() => sut.add(username)).toThrow(HttpError);
             }
         });
 
@@ -36,7 +37,7 @@ describe('UserController', () => {
             const ids = [NaN, '28', ''];
 
             for (const id of ids) {
-                expect(() => sut.getById(id as number)).toThrow();
+                expect(() => sut.getById(id as number)).toThrow(HttpError);
             }
         });
 
@@ -44,7 +45,7 @@ describe('UserController', () => {
             const ids: number[] = [0.4, 11.993, 2.7];
 
             for (const id of ids) {
-                expect(() => sut.getById(id)).toThrow();
+                expect(() => sut.getById(id)).toThrow(HttpError);
             }
         });
 
@@ -52,7 +53,7 @@ describe('UserController', () => {
             const ids: number[] = [-1, -3, -482];
 
             for (const id of ids) {
-                expect(() => sut.getById(id)).toThrow();
+                expect(() => sut.getById(id)).toThrow(HttpError);
             }
         });
 

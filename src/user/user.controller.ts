@@ -1,3 +1,5 @@
+import { HttpError } from '../application/http-error';
+import { HttpStatusCode } from '../application/http-status-code';
 import {
     isNumberDecimal,
     isNumberNegative,
@@ -12,7 +14,10 @@ export class UserController {
 
     add(username: string): User {
         if (isStringEmpty(username)) {
-            throw new Error('Given username is empty.');
+            throw new HttpError(
+                HttpStatusCode.BadRequest,
+                'Given username is empty or whitespaced.',
+            );
         }
 
         return this.userService.add(username);
@@ -20,15 +25,24 @@ export class UserController {
 
     getById(id: number): User | null {
         if (isStrictlyNaN(id)) {
-            throw new Error('Given id is not a number.');
+            throw new HttpError(
+                HttpStatusCode.BadRequest,
+                'Given id is not a number.',
+            );
         }
 
         if (isNumberDecimal(id)) {
-            throw new Error('Given id is a decimal.');
+            throw new HttpError(
+                HttpStatusCode.BadRequest,
+                'Given id is a decimal.',
+            );
         }
 
         if (isNumberNegative(id)) {
-            throw new Error('Given id is negative.');
+            throw new HttpError(
+                HttpStatusCode.BadRequest,
+                'Given id is negative.',
+            );
         }
 
         return this.userService.getById(id);

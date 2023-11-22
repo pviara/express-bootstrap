@@ -64,16 +64,12 @@ export class ExpressServer {
                 res: Response,
                 next: NextFunction,
             ): void => {
-                let statusCode = HttpStatusCode.InternalServerError;
-
-                if (error instanceof ApplicationError) {
-                    statusCode =
-                        this.errorHandlerService.getHttpStatusCodeFrom(error);
-                }
+                const { httpStatusCode, message } =
+                    this.errorHandlerService.handleError(error);
 
                 console.error(error.stack);
 
-                res.status(statusCode).json({ message: error.message });
+                res.status(httpStatusCode).json({ message });
             },
         );
     }
