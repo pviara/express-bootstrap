@@ -1,9 +1,9 @@
-import { ApplicationError } from './application-error';
-import { ApplicationErrorCode } from './application-error-code';
-import { HttpError } from './http-error';
-import { HttpStatusCode } from './http-status-code';
+import { AppError } from './app-error/app-error';
+import { AppErrorCode } from './app-error/app-error-code';
+import { HttpError } from './http-error/http-error';
+import { HttpStatusCode } from './http-error/http-status-code';
 
-type ErrorCorrelation = Record<ApplicationErrorCode, HttpStatusCode>;
+type ErrorCorrelation = Record<AppErrorCode, HttpStatusCode>;
 
 export class ErrorHandlerService {
     private correlationTable: ErrorCorrelation = {
@@ -15,7 +15,7 @@ export class ErrorHandlerService {
             return error;
         }
 
-        if (error instanceof ApplicationError) {
+        if (error instanceof AppError) {
             const httpStatusCode = this.getHttpStatusCodeFrom(error);
             return new HttpError(httpStatusCode, error.message);
         }
@@ -23,9 +23,7 @@ export class ErrorHandlerService {
         return new HttpError(HttpStatusCode.InternalServerError, error.message);
     }
 
-    private getHttpStatusCodeFrom(
-        applicationError: ApplicationError,
-    ): HttpStatusCode {
+    private getHttpStatusCodeFrom(applicationError: AppError): HttpStatusCode {
         return this.correlationTable[applicationError.errorCode];
     }
 }

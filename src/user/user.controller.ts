@@ -1,5 +1,5 @@
-import { HttpError } from '../application/http-error';
-import { HttpStatusCode } from '../application/http-status-code';
+import { HttpError } from '../infrastructure/error-handling/http-error/http-error';
+import { HttpStatusCode } from '../infrastructure/error-handling/http-error/http-status-code';
 import {
     isNumberDecimal,
     isNumberNegative,

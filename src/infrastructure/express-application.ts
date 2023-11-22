@@ -1,4 +1,4 @@
-import { ErrorHandlerService } from '../application/error-handler.service';
+import { ErrorHandlerService } from './error-handling/error-handler.service';
 import { ExpressRouter } from './express-router';
 import { ExpressServer } from './express-server';
 import { UserJSONService } from '../user/user.json-service';

@@ -1,4 +1,4 @@
-import { HttpError } from '../application/http-error';
+import { HttpError } from '../infrastructure/error-handling/http-error/http-error';
 import { User } from './user';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';

@@ -1,9 +1,9 @@
-import { ApplicationError } from '../../application/application-error';
-import { ApplicationErrorCode } from '../../application/application-error-code';
+import { AppError } from '../../infrastructure/error-handling/app-error/app-error';
+import { AppErrorCode } from '../../infrastructure/error-handling/app-error/app-error-code';
 
-export class AlreadyExistingUserError extends ApplicationError {
+export class AlreadyExistingUserError extends AppError {
     constructor(username: string) {
-        super(ApplicationErrorCode.AlreadyExistingUser);
+        super(AppErrorCode.AlreadyExistingUser);
         this.message = this.formatMessage(username);
     }
 

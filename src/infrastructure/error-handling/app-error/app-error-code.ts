@@ -1,3 +1,3 @@
-export enum ApplicationErrorCode {
+export enum AppErrorCode {
     AlreadyExistingUser = 'AlreadyExistingUser',
 }
