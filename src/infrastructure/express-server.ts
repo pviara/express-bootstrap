@@ -1,10 +1,8 @@
-import { AppError } from './error-handling/app-error/app-error';
 import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import { ErrorHandlerService } from './error-handling/error-handler.service';
 import express, { NextFunction, Request, Response } from 'express';
 import { ExpressRouter } from './express-router';
-import { HttpStatusCode } from './error-handling/http-error/http-status-code';
 
 export class ExpressServer {
     private express = express();
